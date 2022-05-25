@@ -75,7 +75,7 @@ const HomePageAnon = () => {
                 <p>
                   <a
                     className="btn btn-sm btn-primary"
-                    href="https://github.com/murata2021/assetTracker"
+                    href="https://github.com/murata2021/Asset-Tracker"
                     target="_blank"
                   >
                     Learn more

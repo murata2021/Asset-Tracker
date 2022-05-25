@@ -293,12 +293,67 @@ router.patch(
         (getPassword = true)
       );
 
-      if (userInDb.inactive) {
-        throw new ForbiddenException();
-      }
-
       if (!req.authenticatedUser.isAdmin && userInDb.inactive)
         throw new ForbiddenException();
+
+      await UserService.updateUserPassword(userId, req.body);
+      return res.send({ message: "Password is changed successfully" });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
+router.patch(
+  "/api/1.0/companies/:companyId/users/:userId/reset-password",
+  ensureLoggedIn,
+  ensureCompanyAdmin,
+  check("newPassword")
+    .trim()
+    .notEmpty()
+    .withMessage("Password cannot be null")
+    .bail()
+    .isLength({ min: 6 })
+    .withMessage("Password must be at least 6 characters")
+    .bail()
+    .matches(/^(?:(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*)$/)
+    .withMessage(
+      "Password must have at least 1 uppercase, 1 lowercase letter and 1 number"
+    )
+    .bail()
+    .custom(async (newPassword, { req }) => {
+      if (Number.isInteger(+req.params.userId)) {
+        let companyId = req.params.companyId;
+        const userInDb = await User.findOne({
+          where: { id: +req.params.userId },
+        });
+        if (userInDb) {
+          const passwordValidation = await bcrypt.compare(
+            newPassword,
+            userInDb.password
+          );
+          if (passwordValidation) {
+            throw new Error(
+              "New password must be different than the previous one"
+            );
+          }
+        }
+      }
+    }),
+  async (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return next(new ValidationException(errors.array()));
+    }
+
+    try {
+      const userId = +req.params.userId;
+      const companyId = +req.params.companyId;
+      const userInDb = await UserService.getUserFromCompany(
+        companyId,
+        userId,
+        (getPassword = true)
+      );
 
       await UserService.updateUserPassword(userId, req.body);
       return res.send({ message: "Password is changed successfully" });

@@ -18,39 +18,46 @@ export const signUp = (body) => {
 
 //AUTH
 export const login = (body) => {
-  return axios.post("/api/1.0/auth", body);
+  return axios.post(`${BASE_URL}/api/1.0/auth`, body);
 };
 
 //USER OPERATIONS
 export const loadUsers = (companyId, page, search, size = 5) => {
-  return axios.get(`/api/1.0/companies/${companyId}/users`, {
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/users`, {
     params: { page, size, search },
   });
 };
 
 export const addUser = (body, companyId) => {
-  return axios.post(`/api/1.0/companies/${companyId}/users`, body);
+  return axios.post(`${BASE_URL}/api/1.0/companies/${companyId}/users`, body);
 };
 export const getUserById = (companyId, userId) => {
-  return axios.get(`/api/1.0/companies/${companyId}/users/${userId}`);
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}`);
 };
 
 export const updateUser = (companyId, userId, body) => {
-  return axios.patch(`/api/1.0/companies/${companyId}/users/${userId}`, body);
+  return axios.patch(`${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}`, body);
 };
 export const deleteUser = (companyId, userId) => {
-  return axios.delete(`/api/1.0/companies/${companyId}/users/${userId}`);
+  return axios.delete(`${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}`);
 };
 
 export const deactivateUser = (companyId, userId) => {
   return axios.patch(
-    `/api/1.0/companies/${companyId}/users/${userId}/deactivate`
+    `${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}/deactivate`
   );
 };
 
 export const updateUserPassword = (companyId, userId, body) => {
   return axios.patch(
-    `/api/1.0/companies/${companyId}/users/${userId}/password`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}/password`,
+    body
+  );
+};
+
+export const resetUserPassword = (companyId, userId, body) => {
+  return axios.patch(
+    `${BASE_URL}/api/1.0/companies/${companyId}/users/${userId}/reset-password`,
     body
   );
 };
@@ -64,28 +71,28 @@ export const getVendors = (
   page,
   size = 5
 ) => {
-  return axios.get(`/api/1.0/companies/${companyId}/vendors`, {
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/vendors`, {
     params: { page, size, search, pagination },
   });
 };
 
 export const getVendorById = (companyId, vendorId) => {
-  return axios.get(`/api/1.0/companies/${companyId}/vendors/${vendorId}`);
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/vendors/${vendorId}`);
 };
 
 export const addVendor = (body, companyId) => {
-  return axios.post(`/api/1.0/companies/${companyId}/vendors`, body);
+  return axios.post(`${BASE_URL}/api/1.0/companies/${companyId}/vendors`, body);
 };
 
 export const updateVendor = (companyId, vendorId, body) => {
   return axios.patch(
-    `/api/1.0/companies/${companyId}/vendors/${vendorId}`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/vendors/${vendorId}`,
     body
   );
 };
 
 export const deleteVendor = (companyId, vendorId) => {
-  return axios.delete(`/api/1.0/companies/${companyId}/vendors/${vendorId}`);
+  return axios.delete(`${BASE_URL}/api/1.0/companies/${companyId}/vendors/${vendorId}`);
 };
 
 export const getVendorsAsset = (
@@ -96,7 +103,7 @@ export const getVendorsAsset = (
   size = 5
 ) => {
   return axios.get(
-    `/api/1.0/companies/${companyId}/vendors/${vendorId}/assets`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/vendors/${vendorId}/assets`,
     {
       params: { page, size, search },
     }
@@ -105,7 +112,7 @@ export const getVendorsAsset = (
 
 //ASSET GROUP OPERATIONS
 export const addAssetGroup = (body, companyId) => {
-  return axios.post(`/api/1.0/companies/${companyId}/asset-groups`, body);
+  return axios.post(`${BASE_URL}/api/1.0/companies/${companyId}/asset-groups`, body);
 };
 
 export const getAssetGroups = (
@@ -115,27 +122,27 @@ export const getAssetGroups = (
   page,
   size = 5
 ) => {
-  return axios.get(`/api/1.0/companies/${companyId}/asset-groups`, {
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/asset-groups`, {
     params: { page, size, search, pagination },
   });
 };
 
 export const getAssetGroupById = (companyId, assetGroupId) => {
   return axios.get(
-    `/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`
+    `${BASE_URL}/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`
   );
 };
 
 export const updateAssetGroup = (companyId, assetGroupId, body) => {
   return axios.patch(
-    `/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`,
     body
   );
 };
 
 export const deleteAssetGroup = (companyId, assetGroupId) => {
   return axios.delete(
-    `/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`
+    `${BASE_URL}/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}`
   );
 };
 
@@ -147,7 +154,7 @@ export const getAssetGroupsAsset = (
   size = 5
 ) => {
   return axios.get(
-    `/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}/assets`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/asset-groups/${assetGroupId}/assets`,
     {
       params: { page, size, search },
     }
@@ -156,31 +163,31 @@ export const getAssetGroupsAsset = (
 
 //ASSET OPERATIONS
 export const addAsset = (body, companyId) => {
-  return axios.post(`/api/1.0/companies/${companyId}/assets`, body);
+  return axios.post(`${BASE_URL}/api/1.0/companies/${companyId}/assets`, body);
 };
 
 export const getAssets = (companyId, search = "", page, size = 5) => {
-  return axios.get(`/api/1.0/companies/${companyId}/assets`, {
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/assets`, {
     params: { page, size, search },
   });
 };
 
 export const getAssetById = (companyId, assetId) => {
-  return axios.get(`/api/1.0/companies/${companyId}/assets/${assetId}`);
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/assets/${assetId}`);
 };
 
 export const updateAsset = (companyId, assetId, body) => {
-  return axios.patch(`/api/1.0/companies/${companyId}/assets/${assetId}`, body);
+  return axios.patch(`${BASE_URL}/api/1.0/companies/${companyId}/assets/${assetId}`, body);
 };
 
 export const deleteAsset = (companyId, assetId) => {
-  return axios.delete(`/api/1.0/companies/${companyId}/assets/${assetId}`);
+  return axios.delete(`${BASE_URL}/api/1.0/companies/${companyId}/assets/${assetId}`);
 };
 
 //ASSET STATUS OPERATIONS
 
 export const getAsssetStatus = (companyId) => {
-  return axios.get(`/api/1.0/companies/${companyId}/asset-status`);
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}/asset-status`);
 };
 
 export const getAssetsByStatus = (
@@ -191,7 +198,7 @@ export const getAssetsByStatus = (
   size = 5
 ) => {
   return axios.get(
-    `/api/1.0/companies/${companyId}/asset-status/${statusId}/assets`,
+    `${BASE_URL}/api/1.0/companies/${companyId}/asset-status/${statusId}/assets`,
     {
       params: { page, size, search },
     }
@@ -202,15 +209,15 @@ export const getAssetsByStatus = (
 //COMPANY OPERATIONS
 
 export const getCompanyById = (companyId) => {
-  return axios.get(`/api/1.0/companies/${companyId}`);
+  return axios.get(`${BASE_URL}/api/1.0/companies/${companyId}`);
 };
 
 export const updateCompany=(companyId,body)=>{
 
-  return axios.patch(`/api/1.0/companies/${companyId}`,body)
+  return axios.patch(`${BASE_URL}/api/1.0/companies/${companyId}`,body)
 }
 
 export const deleteCompany=(companyId)=>{
 
-  return axios.delete(`/api/1.0/companies/${companyId}`)
+  return axios.delete(`${BASE_URL}/api/1.0/companies/${companyId}`)
 }

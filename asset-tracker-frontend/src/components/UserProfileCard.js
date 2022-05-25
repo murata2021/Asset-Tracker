@@ -5,6 +5,7 @@ import {
   deleteUser,
   deactivateUser,
   updateUserPassword,
+  resetUserPassword
 } from "../api/apiCalls";
 import ButtonWithProgress from "./ButtonWithProgress";
 import Modal from "./Modal";
@@ -58,11 +59,23 @@ const ProfileCard = (props) => {
   const onClickSavePassword = async () => {
     setPasswordUpdateApiProgress(true);
     try {
-      const response = await updateUserPassword(
-        auth.companyId,
-        user.id,
-        passwordEditFormData
-      );
+      let response;
+
+      if(auth.isAdmin&&auth.userId!==user.id){
+        response = await resetUserPassword(
+          auth.companyId,
+          user.id,
+          passwordEditFormData
+        );
+      }
+      else{
+        response = await updateUserPassword(
+          auth.companyId,
+          user.id,
+          passwordEditFormData
+        );
+      }
+      
       setPasswordEditMode(false);
       setPasswordEditFormData({
         oldPassword: "",
@@ -224,14 +237,14 @@ const ProfileCard = (props) => {
   } else if (passwordEditMode) {
     content = (
       <>
-        <Input
+        {(!auth.isAdmin||auth.userId===user.id)&&(<Input
           onChange={handlePasswordChange}
           initialValue={passwordEditFormData.oldPassword}
           id="oldPassword"
           label="Old Password"
           type="password"
           help={errors.oldPassword}
-        />
+        />)}
         <Input
           onChange={handlePasswordChange}
           initialValue={passwordEditFormData.newPassword}
