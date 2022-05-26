@@ -27,7 +27,7 @@ Here is the general process for a user:
   ### Technologies & Tools Used
   
   - Node.js
-  = Express.js
+  - Express.js
   - PostgreSQL
   - Sequelize.js
   - Express-Validator
