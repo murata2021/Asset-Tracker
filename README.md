@@ -15,9 +15,9 @@ Here is the general process for a user:
 2. Each company account has only one system administrator and deleting the system administrator, deletes the company account as well
 3. System Administrator can create new users, edit/delete users, create/edit/delete asset-related information, view reports and delete company account
 4. When the non-admin user logs in, he/she can perform a different set of tasks:
- - they can edit/delete asset groups, asset and vendor information.
- - view vendor, asset groups, and asset reports
- - edit their own information
+ * they can edit/delete asset groups, asset and vendor information.
+ * view vendor, asset groups, and asset reports
+ * edit their own information
 
 ## Backend
 
@@ -26,13 +26,13 @@ Here is the general process for a user:
 
   ### Technologies & Tools Used
   
-  - Node.js
-  - Express.js
-  - PostgreSQL
-  - Sequelize.js
-  - Express-Validator
-  - Json Web Token
-  - Bcrypt
+  * Node.js
+  * Express.js
+  * PostgreSQL
+  * Sequelize.js
+  * Express-Validator
+  * Json Web Token
+  * Bcrypt
 
 ## Frontend
 
@@ -40,11 +40,11 @@ Here is the general process for a user:
 
   ### Technologies & Tools Used
   
-  - React.js
-  - React-redux
-  - React-router
-  - React-chartsjs-2
-  - React-datepicker
-  - React-currency-input-field
+  * React.js
+  * React-redux
+  * React-router
+  * React-chartsjs-2
+  * React-datepicker
+  * React-currency-input-field
   
   
