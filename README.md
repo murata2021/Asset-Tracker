@@ -24,22 +24,22 @@ Here is the general process for a user:
 - Backend is deployed on https://asset-tracker-2022.herokuapp.com/
 - Backend repository: https://github.com/murata2021/Asset-Tracker/tree/main/asset-tracker-backend
 
-  ### Technologies & Tools Used
+  ### Technologies & Tools Used
   
-  Node.js
-  Express.js
-  PostgreSQL
-  Sequelize.js
-  Express-Validator
-  Json Web Token
-  Bcrypt
+  - Node.js
+  = Express.js
+  - PostgreSQL
+  - Sequelize.js
+  - Express-Validator
+  - Json Web Token
+  - Bcrypt
 
 ## Frontend
 
 - Frontend repository: https://github.com/murata2021/Asset-Tracker/tree/main/asset-tracker-frontend
 
   ### Technologies & Tools Used
-  
+  
   - React.js
   - React-redux
   - React-router
