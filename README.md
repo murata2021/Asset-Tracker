@@ -1,9 +1,6 @@
 # Asset-Tracker
 
-Asset Tracker is my second capstone project for my software engineering bootcamp with Springboard. It is a web application that helps companies to:
-- Track their assets
-- Get instant access to their asset data
-- Monitor the status of their asset & stay in the know with real-time reports
+Asset Tracker is my second capstone project for my software engineering bootcamp with Springboard. It is a web application that helps companies track their assets, gain real-time visibility into their asset status, and enable data-driven decision-making on inventory management via real-time report
 
 It is hosted on https://asset-tracker-mya.surge.sh/
 
