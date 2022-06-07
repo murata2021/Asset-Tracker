@@ -43,5 +43,6 @@ Here is the general process for a user:
   - React-chartsjs-2
   - React-datepicker
   - React-currency-input-field
+  - Bootstrap 5
   
   
